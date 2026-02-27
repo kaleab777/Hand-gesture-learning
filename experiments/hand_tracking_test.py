@@ -1,5 +1,10 @@
 import cv2
 import mediapipe as mp
+import math
+from collections import deque, Counter
+
+history = deque(maxlen=10)     # last 10 frame predictions
+MIN_VOTES = 6                  # must appear at least 6/10 frames
 
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
